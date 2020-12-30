@@ -1,0 +1,5 @@
+.dropify-wrapper .dropify-message p { font-size: 18px; }
+.featued_image_radio { position: absolute; top: -20px; left: -20px; visibility: hidden; }
+.featued_image_radio:checked + .featured_image_image{
+    box-shadow: 0 0 10px rgba(38, 0, 255, 0.8);
+}
