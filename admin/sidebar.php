@@ -1,11 +1,15 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-lg-down-none">
+        <img class="c-sidebar-brand-full" src="assets/brand/SIGZUL-Logo.png" width="80">
+        <img class="c-sidebar-brand-minimized" src="assets/brand/SIGZUL-Logo-collapse.png" width="28">
+        <!--
         <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
             <use xlink:href="assets/brand/coreui.svg#full"></use>
         </svg>
         <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
             <use xlink:href="assets/brand/coreui.svg#signet"></use>
         </svg>
+        -->
     </div>
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
@@ -21,7 +25,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-newspaper"></use>
                 </svg> Entradas
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -41,7 +45,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-school"></use>
                 </svg> Glosario
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -61,7 +65,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
                 </svg> Resultados con LifEscozul
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -80,7 +84,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
                 </svg> Resultados con Escozul
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -99,7 +103,7 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-file"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
                 </svg> Resultados Timeline*
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -126,14 +130,14 @@
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link" href="?action=cancer">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-cog"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tag"></use>
                 </svg> Tipos de Cáncer
             </a>
         </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-cog"></use>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tags"></use>
                 </svg> Categorías
             </a>
             <ul class="c-sidebar-nav-dropdown-items">
@@ -143,7 +147,7 @@
                     </a>
                 </li>
                 <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=edit_category">
+                    <a class="c-sidebar-nav-link" href="?action=add_new_category">
                         <span class="c-sidebar-nav-icon"></span> Añadir nueva
                     </a>
                 </li>

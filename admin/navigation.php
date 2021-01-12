@@ -5,9 +5,7 @@
             <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
         </svg>
     </button><a class="c-header-brand d-lg-none" href="#">
-        <svg width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="assets/brand/coreui.svg#full"></use>
-        </svg></a>
+    <img class="c-sidebar-brand-full" src="assets/brand/SIGZUL-Logo-negative.png" width="80"></a>
     <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
         data-class="c-sidebar-lg-show" responsive="true">
         <svg class="c-icon c-icon-lg">

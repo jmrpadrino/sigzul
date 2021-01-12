@@ -1,6 +1,5 @@
 <?php
 // obtener la lista de las imagenes
-
 function get_the_images_list() {
     $images = $images_result_list = array();
     $images = glob( THEME_DIR . UPLOADS_PATH . '*.*' );
@@ -17,7 +16,6 @@ function get_the_images_list() {
 }
 
 // Guardar Archivo
-
 function save_file( $file ) {
     $target_dir = THEME_DIR . UPLOADS_PATH;
     $target_file = $target_dir . basename( $_FILES['media_file']['name'] );

@@ -1,6 +1,6 @@
-<?php include 'sidebar.php'; ?>
+<?php include 'admin/sidebar.php'; ?>
 <div class="c-wrapper c-fixed-components">
-    <?php include 'navigation.php'; ?>
+    <?php include 'admin/navigation.php'; ?>
     <div class="c-body">
         <main class="c-main">
             <div class="container-fluid">
@@ -17,7 +17,7 @@
                     if ( isset( $_GET['action'] ) ){
                         include 'views/' . $_GET['action'] . '.php';
                     }else{
-                        include 'desktop.php';
+                        include 'views/desktop.php';
                     }
                 ?>
             </div>

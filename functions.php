@@ -1,6 +1,4 @@
 <?php
-// Incluir configuraciones
-include 'config.php';
 
 // Obtener vista
 $view = get_view_data();
@@ -78,6 +76,11 @@ function get_view_data(){
             'title' => 'Agregar y Eliminar Categorías',
             'slug' => 'categories',
             'short_title' => 'Categorías'
+        ),
+        'add_new_category' => array(
+            'title' => 'Añadir una categoría',
+            'slug' => 'add_new_category',
+            'short_title' => 'Añadir categoría'
         ),
         'edit_category' => array(
             'title' => 'Editar una categoría',
@@ -157,7 +160,7 @@ function enqueue_footer_scripts(){
     <script>
         // Javascript global vars
         var sigzul_vars = {
-            'ajax_url'      : '',
+            'ajax_url'      : '<?php echo THEME_URL; ?>/config/admin-ajax.php',
             'site_url'      : '<?php echo THEME_URL; ?>',
             'media_url'     : '<?php echo UPLOADS_PATH; ?>'
         }
@@ -221,11 +224,6 @@ function enqueue_footer_scripts(){
             }
         });
         */
-        $('#title').focusout(function(){
-            var slug = '';
-            slug = generateSlug($(this).val());
-            $('#slug').val(slug);
-        })
     })
 </script>
 <?php 

@@ -1,7 +1,9 @@
-<?php
-    $results = get_posts();
+<?php    
+    //ecopre($results);
+    $results = get_categories();
+
     if ( !$results->num_rows > 0 ) {
-        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_post">aqui</a> para <strong>Añadir una entrada nueva</strong>.';
+        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_category">aqui</a> para <strong>Añadir una categoría nueva</strong>.';
     }
 ?>
 <div class="row">
@@ -24,16 +26,8 @@
         <table class="table table-responsive-sm table-striped">
             <thead>
                 <tr>
-                    <th>Título</th>
-                    <th>Fecha</th>
-                    <th>
-                        <svg width="18" height="18" alt="CoreUI Logo">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image"></use>
-                        </svg>
-                    </th>
-                    <th>Autor</th>
-                    <th>Categorías</th>
-                    <th>SEO</th>
+                    <th>Nombre</th>
+                    <th>Slug</th>
                     <th width="18"></th>
                 </tr>
             </thead>
@@ -42,32 +36,13 @@
                 <?php //ecopre($row); ?>
                 <tr>
                     <td>
-                        <a href="?action=edit_post&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['post_title']; ?></strong></a>
+                        <a href="?action=edit_category&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['term_title']; ?></strong></a>
                     </td>
-                    <td><?php echo date('d/m/Y', strtotime($row['post_date'])); ?></td>
-                    <td><?php 
-                        if($row['post_featuredimage']){
-                    ?>
-                        <svg width="18" height="18" alt="CoreUI Logo">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image"></use>
-                        </svg>
-                    <?php }else{ ?>
-                        <svg width="18" height="18" alt="CoreUI Logo">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image-broken"></use>
-                        </svg>
-                    <?php } ?></td>
-                    <td><?php echo ($row['post_author'] == 1) ? 'Admin': 'Consultar en DB'; ?></td>
-                    <td><?php 
-                        $categories = unserialize($row['post_category']);
-                        if($categories){
-                            echo implode(', ', $categories);
-                        }
-                    ?></td>
                     <td>
                         <span class="badge badge-success">SEO</span>
                     </td>
                     <td>
-                        <a class="text-danger" title="Eliminar" href="?action=trash_post&id=<?php echo $row['ID']; ?>">
+                        <a class="text-danger" title="Eliminar" href="?action=categories&trash=true&id=<?php echo $row['ID']; ?>">
                             <svg width="18" height="18" alt="CoreUI Logo">
                                 <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
                             </svg>

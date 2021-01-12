@@ -1,5 +1,6 @@
 $(document).ready(function(){  
-    var featuredImageUrl = '';  
+    var featuredImageUrl = '';
+    var slug_input = $('#slug').val();  
     $('.featued_image_radio').click(function(){
         var element = $(this);
         var html = '';
@@ -34,6 +35,25 @@ $(document).ready(function(){
         $(this).addClass('active');
         
     })
+
+    // Creción del Slug
+    $('#title').focusout(function(){
+        generateSlug($(this).val());
+    })
+
+    // activar Cambio de Slug
+    $('#change_slug').click(function(){
+        $('#slug').removeAttr('readonly').focus();
+        if($(this).text() == 'Editar'){
+            $(this).text('Guardar');
+        }else{
+            if($('#slug').val() != slug_input){
+                generateSlug($('#slug').val());
+            }
+            $('#slug').attr('readonly', true);
+            $(this).text('Editar').focus();
+        }
+    })
 })
 
 function clearFeaturedImageField(){
@@ -43,6 +63,7 @@ function clearFeaturedImageField(){
 }
 
 function generateSlug (str) {
+    var slug;
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
   
@@ -58,5 +79,16 @@ function generateSlug (str) {
         .replace(/\s+/g, '-') // collapse whitespace and replace by -
         .replace(/-+/g, '-'); // collapse dashes
 
-    return str;
+    // Consultar en la base de datos si existe via AJAX
+    $.ajax({
+        url: sigzul_vars.ajax_url,
+        data: {
+            action: 'validar_slug',
+            data: str
+        },
+        success: function(response){ 
+            slug = response;
+            $('#slug').val(slug);
+        }
+    });
 };

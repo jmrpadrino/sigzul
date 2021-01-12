@@ -1,6 +1,6 @@
 <body class="c-app flex-row align-items-center">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center h-100">
             <div class="col-md-8">
                 <div class="card-group">
                     <div class="card p-4">

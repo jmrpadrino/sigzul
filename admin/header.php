@@ -10,7 +10,7 @@
         <meta name="author" content="Jose Rodríguez">
         <meta name="keyword" content="Admin,Dashboard,LifEscozul,Escozul">
         <title>SIGZUL - Administración de contenidos LifEscozul</title>
-        <link rel="icon" type="image/jpg" href="<?php echo THEME_URL . '/assets/favicon/favicon.ico'; ?>"/>
+        <link rel="icon" type="image/jpg" href="<?php echo THEME_URL . '/assets/brand/SIGZUL-Logo-collapse.png'; ?>"/>
         <link href="css/style.css" rel="stylesheet">
         <link href="css/sigzul.css" rel="stylesheet">
         <!--
