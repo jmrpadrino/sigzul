@@ -2,7 +2,20 @@
 // funcion Obtener todos los posts
 function get_posts(){
     global $database;
-    $query = "SELECT * FROM ".TABLE_PREFIX."posts ORDER BY ID DESC";
+    $posts_per_page = 10;
+    if(isset($_GET['posts_per_page'])){
+        $posts_per_page = $_GET['posts_per_page'];
+    }
+    $page = 1;
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+
+    if(!isset($_GET['filterby'])){
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts ORDER BY ID DESC";
+    }else{
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts ORDER BY ID DESC LIMIT " . $posts_per_page;
+    }
     return $database->query( $query );
 
 }

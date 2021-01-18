@@ -42,7 +42,7 @@
                 <?php //ecopre($row); ?>
                 <tr>
                     <td>
-                        <a href="?action=edit_post&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['post_title']; ?></strong></a>
+                        <a href="?action=edit_post&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['post_title']; ?></strong></a> <?php if ('draft' == $row['post_status']){ ?>- <span class="text-muted">Borrador</span><?php } ?> 
                     </td>
                     <td><?php echo date('d/m/Y', strtotime($row['post_date'])); ?></td>
                     <td><?php 
@@ -79,7 +79,7 @@
         </table>
     </div>
 </div>
-<?php if ( !$results->num_rows > 10 ) { ?>
+<?php if ( !$results->num_rows / 1 >= 1 ) { ?>
 <div class="row">
     <div class="col-12">
         <ul class="pagination">

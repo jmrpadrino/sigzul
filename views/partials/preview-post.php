@@ -13,17 +13,6 @@
 <head>
 
     <title>Título</title>
-
-    <meta name="description" content="¿El cáncer que es? su impacto en nuestra vida. Que hacer y que tratamientos llevar. Como se origina 
-    el cáncer. Entendiendo el cáncer. Como combatirlo." />
-
-    <meta name="keywords" content="Escozul, Escorpion Azul, Escoazul, Alacran Azul, Escozul y Vidatox, Escorpion Azul Cuba, Escozine, Alacran Azul Cuba, Obtener el Escozul, Veneno del Escorpion Azul, Escozul Cuba, Veneno del Alacran Azul" />    
-
-    <meta property="og:image" content="/images/blog-que-es-el-cancer.png" />
-    <meta property="og:image:secure_url" content="/images/blog-que-es-el-cancer.png" />
-    
-    <link rel="canonical" href="https://escozul-cuba.com/que-es-el-cancer/" />
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://escozul-cuba.com/css/main.css" async>
     <link rel="stylesheet" href="https://escozul-cuba.com/css/custom-styles.css" async>
@@ -38,7 +27,7 @@
                     <div class="row">
                         <div class="col-sm-12 mb-5">
                             <h1 class="page-title"><?php echo $row['post_title']; ?></h1>
-                            <p class="page-summary"><?php echo $row['post_excerpt']; ?></p>
+                            <p class="page-summary"><?php echo $row['post_init_text']; ?></p>
                         </div>
                     </div>
                     <div class="row">

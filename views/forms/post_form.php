@@ -59,8 +59,16 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-12">
+                    <label for="content"><b>Contenido Principal</b></label>
                     <textarea class="form-control w-100" id="content" name="post_content"
                         placeholder="Escriba aqui en contenido del post"><?php echo (isset( $row['post_content'] ) ) ? $row['post_content'] : '' ; ?></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-12">
+                    <label for="content"><b>Texto introductorio</b></label>
+                    <textarea class="form-control w-100" id="post_init_text" name="post_init_text"
+                        placeholder="Escriba aqui el texto introductorio"><?php echo (isset( $row['post_init_text'] ) ) ? $row['post_init_text'] : '' ; ?></textarea>
                 </div>
             </div>
             <div class="card">
@@ -158,6 +166,16 @@
                             </a>
                             <a href="#" data-toggle="modal" data-target="#mediamodal">Asignar imagen destacada</a>
                             <button id="clearFeaturedImage" class="btn btn-ghost-danger <?php echo (isset($row['post_featuredimage'])) ? '' : 'd-none'; ?>" onclick="clearFeaturedImageField()" type="button">Quitar imagen destacada</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><strong>Imagen Thumbnail</strong></div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input class="form-control" id="thumbnail_image" type="url" name="post_thumbnail" value="<?php echo (isset($row['post_thumbnail'])) ? $row['post_thumbnail'] : ''; ?>" placeholder="Pegar URL">
                         </div>
                     </div>
                 </div>

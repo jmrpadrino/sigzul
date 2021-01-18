@@ -6,8 +6,7 @@ $(document).ready(function(){
         var html = '';
         html += '<img class="img-fluid" src="'+ element.data('url') +'">';
         html += '<p><strong>' + element.data('name') + '</strong></p>';
-        html += '<input class="form-control w-100 mb-3" id="image_selected_url" type="text" value="'+ element.data('url') +'" readonly>';
-        html += '<a class="text-danger" href="?action=media&remove='+element.data('name')+'">Eliminar permanentemente</a>';
+        html += '<input class="form-control w-100 mb-3" id="image_selected_url" type="text" value="'+ element.data('url') +'" readonly>';        
         $('#show_frame').html('');
         $('#show_frame').append(html);
         $('#set_featured_image').removeAttr('disabled');
@@ -52,6 +51,38 @@ $(document).ready(function(){
             }
             $('#slug').attr('readonly', true);
             $(this).text('Editar').focus();
+        }
+    })
+
+    /**
+     * Eliminar imagen permanentemente
+     */
+    $('.remove-item').click( function() {
+        var resp = confirm('¿Si esta de acuerdo con ELIMINAR la imagen "'+ $(this).data('file') +'"?');
+        var item = $(this);
+        if( true === resp ){
+            $.ajax({
+                url: sigzul_vars.ajax_url,
+                data: {
+                    action: 'remove_media',
+                    data: $(this).data('file')
+                },
+                beforeSend: function(){
+                },
+                success: function(response){
+                    if('false' == response){
+                        alert('No se ha podido eliminar el archivo.');
+                    }else{
+                        $('#show_frame').html('');
+                        item.parents('.image-placeholder').remove();
+                    }
+                    
+                }, 
+                error: function(a,b){
+                    console.log(a);
+                    console.log(b);
+                }
+            })
         }
     })
 })

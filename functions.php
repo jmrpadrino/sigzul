@@ -130,24 +130,51 @@ function enqueue_header_scripts(){
     <script src="vendors/codemirror/mode/javascript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.6.2/tinymce.min.js" integrity="sha512-sOO7yng64iQzv/uLE8sCEhca7yet+D6vPGDEdXCqit1elBUAJD1jYIYqz0ov9HMd/k30e4UVFAovmSG92E995A==" crossorigin="anonymous"></script>
     <script>
+        var templates = [
+                    { 
+                        title: 'Subtitulo H2 naranja/subrayado', 
+                        description: 'Alineado a la izquierda y subrayado (Naranja)', 
+                        content: '<h2 class="quote-styled ta-r">Cambiar este texto</h2>' 
+                    },
+                    { 
+                        title: 'Subtitulo H2 naranja/centro', 
+                        description: 'Alineado al centro (Naranja)', 
+                        content: '<h2 class="text-orange ta-c fs-24">Cambiar este texto</h2>' 
+                    },
+                ];
         tinymce.init(
             {
                 selector:'#content',
-                height: 500,
+                height: 800,
                 language: 'es',
                 language_url : '/langs/es.js',
-                menubar: 'file edit view insert format tools table tc help',
-                contextmenu: 'link image imagetools table configurepermanentpen',
-                templates: [
-                    { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
-                    { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
-                    { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
-                ],
+                menubar: 'file edit view insert template format tools table tc help',
+                contextmenu: 'link image imagetools table configurepermanentpen insert template',
+                //toolbar: 'template',
+                templates: templates,
                 plugins: [
                     'advlist autolink lists link image charmap print preview anchor table',
                     'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount'
+                    'insertdatetime media table paste code help wordcount template'
                 ],
+                content_css : '/css/tiny-custom-styles.css',
+            }
+        );
+        tinymce.init(
+            {
+                selector:'#post_init_text',
+                height: 300,
+                language: 'es',
+                language_url : '/langs/es.js',
+                menubar: 'file edit view insert format templates tools tc help',
+                contextmenu: 'link configurepermanentpen',
+                templates: templates,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview anchor table',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount template'
+                ],
+                content_css : '/css/tiny-custom-styles.css',
             }
         );
     </script>
