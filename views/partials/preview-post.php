@@ -16,7 +16,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://escozul-cuba.com/css/main.css" async>
     <link rel="stylesheet" href="https://escozul-cuba.com/css/custom-styles.css" async>
-
+    <style>
+        .page-main-content p { text-indent: 0; }
+        .page-main-content img { 
+            width: 100%;
+            margin: 100px 0; 
+            height: 100%;
+            border-radius: 12px;
+            box-shadow: 0 28px 50px -10px rgba(0, 0, 0, 0.1);
+        }
+        .page-main-content hr {
+            width: 100%;
+            height: 2px;
+            margin: 100px 40px 60.2px 0;
+            opacity: 0.4;
+            background-color: #e5e5e5;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,7 +42,7 @@
                 <div class="col-sm-12 col-md-8 page-main-content">
                     <div class="row">
                         <div class="col-sm-12 mb-5">
-                            <h1 class="page-title"><?php echo $row['post_title']; ?></h1>
+                            <h1 class="bg-gradient-blue fs-28 uppercase ta-c mb-3"><?php echo $row['post_title']; ?></h1>
                             <p class="page-summary"><?php echo $row['post_init_text']; ?></p>
                         </div>
                     </div>

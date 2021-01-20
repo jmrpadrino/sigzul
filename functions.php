@@ -134,12 +134,22 @@ function enqueue_header_scripts(){
                     { 
                         title: 'Subtitulo H2 naranja/subrayado', 
                         description: 'Alineado a la izquierda y subrayado (Naranja)', 
-                        content: '<h2 class="quote-styled ta-r">Cambiar este texto</h2>' 
+                        content: '<h2 class="quote-styled ta-r">Cambiar_este_texto</h2>' 
                     },
                     { 
                         title: 'Subtitulo H2 naranja/centro', 
                         description: 'Alineado al centro (Naranja)', 
-                        content: '<h2 class="text-orange ta-c fs-24">Cambiar este texto</h2>' 
+                        content: '<h2 class="text-orange ta-c fs-24">Cambiar_este_texto</h2>' 
+                    },
+                    { 
+                        title: 'Subtitulo H2 naranja-gradiente/centro', 
+                        description: 'Alineado al centro (Naranja gradiente)', 
+                        content: '<h2 class="bg-gradient-orange uppercase ta-c fs-24">Cambiar_este_texto</h2>' 
+                    },
+                    { 
+                        title: 'Subtitulo H2 Azul/centro', 
+                        description: 'Alineado al centro (azul)', 
+                        content: '<h2 class="text-blue-main uppercase ta-c fs-20">Cambiar_este_texto</h2>' 
                     },
                 ];
         tinymce.init(
@@ -155,9 +165,12 @@ function enqueue_header_scripts(){
                 plugins: [
                     'advlist autolink lists link image charmap print preview anchor table',
                     'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount template'
+                    'insertdatetime media table paste code help wordcount template hr importcss'
                 ],
                 content_css : '/css/tiny-custom-styles.css',
+                relative_urls : false,
+                remove_script_host : false,
+                importcss_append: true
             }
         );
         tinymce.init(
@@ -175,6 +188,8 @@ function enqueue_header_scripts(){
                     'insertdatetime media table paste code help wordcount template'
                 ],
                 content_css : '/css/tiny-custom-styles.css',
+                relative_urls : false,
+                remove_script_host : false,
             }
         );
     </script>
