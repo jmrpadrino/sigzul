@@ -23,45 +23,48 @@
         </li>
         <li class="c-sidebar-nav-title">Blog</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <a class="c-sidebar-nav-link" href="?action=show_all_posts">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-newspaper"></use>
                 </svg> Entradas
             </a>
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=show_all_posts">
-                        <span class="c-sidebar-nav-icon"></span> Todas las entradas
-                    </a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=add_new_post">
-                        <span class="c-sidebar-nav-icon"></span> Añadir nueva
-                    </a>
-                </li>
-            </ul>
         </li>
-        <li class="c-sidebar-nav-title">Wiki</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
+            <a class="c-sidebar-nav-link" href="?action=show_all_pages">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-newspaper"></use>
+                </svg> Páginas
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-link" href="?action=categories">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tags"></use>
+                </svg> Categorías
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-link" href="?action=tipos_de_cancer">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tag"></use>
+                </svg> Tipos de Cáncer
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-link" href="?action=show_all_wiki">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-school"></use>
                 </svg> Glosario
             </a>
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=show_all_terms">
-                        <span class="c-sidebar-nav-icon"></span> Todos los términos
-                    </a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=add_new_term">
-                        <span class="c-sidebar-nav-icon"></span> Añadir nuevo
-                    </a>
-                </li>
-            </ul>
         </li>
-        <li class="c-sidebar-nav-title">Resultados</li>
+        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
+            <a class="c-sidebar-nav-link" href="?action=media">
+                <svg class="c-sidebar-nav-icon">
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image-plus"></use>
+                </svg> Medios
+            </a>
+        </li>
+        <li class="c-sidebar-nav-title">LifEscozul</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
             <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
                 <svg class="c-sidebar-nav-icon">
@@ -119,40 +122,23 @@
                 </li>
             </ul>
         </li>
+        <?php if ('administrador' == $_SESSION['user_cap']){ ?>
         <li class="c-sidebar-nav-title">Configuración</li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link" href="?action=media">
+            <a class="c-sidebar-nav-link" href="?action=show_all_users">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image-plus"></use>
-                </svg> Medios
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                </svg> Usuarios
             </a>
         </li>
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link" href="?action=cancer">
+            <a class="c-sidebar-nav-link" href="?action=execute_queries">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tag"></use>
-                </svg> Tipos de Cáncer
-            </a>
+                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-spreadsheet"></use>
+                </svg> SQL
+            </a>            
         </li>
-        <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">
-            <a class="c-sidebar-nav-link c-sidebar-nav-dropdown-toggle" href="#">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-tags"></use>
-                </svg> Categorías
-            </a>
-            <ul class="c-sidebar-nav-dropdown-items">
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=categories">
-                        <span class="c-sidebar-nav-icon"></span> Todas las categorías
-                    </a>
-                </li>
-                <li class="c-sidebar-nav-item">
-                    <a class="c-sidebar-nav-link" href="?action=add_new_category">
-                        <span class="c-sidebar-nav-icon"></span> Añadir nueva
-                    </a>
-                </li>
-            </ul>
-        </li>
+        <?php } ?>
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
         data-class="c-sidebar-minimized"></button>

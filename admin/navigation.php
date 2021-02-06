@@ -17,6 +17,7 @@
         <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="?action=categories">Categorías</a></li>
     </ul>
     <ul class="c-header-nav ml-auto mr-4">
+        <li><span id="current_date"></span></li>
         <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
                 <svg class="c-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-bell"></use>
@@ -31,6 +32,7 @@
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
                 </svg></a></li>
         -->
+        <li>Hola, <?php echo $_SESSION['user_name']; ?></li>
         <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#"
                 role="button" aria-haspopup="true" aria-expanded="false">
                 <div class="c-avatar"><img class="c-avatar-img" src="assets/img/avatars/no_avatar_placeholder.png" alt="user@email.com">

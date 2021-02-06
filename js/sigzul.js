@@ -1,6 +1,13 @@
 $(document).ready(function(){  
     var featuredImageUrl = '';
-    var slug_input = $('#slug').val();  
+    var slug_input = $('#slug').val(); 
+    // Para la fecha del sistema
+    setInterval(function(){ 
+        var now = new Date();
+        $('#current_date').html(now);
+    }, 1000);
+
+    // Para las imagenes destacadas 
     $('.featued_image_radio').click(function(){
         var element = $(this);
         var html = '';
@@ -37,7 +44,9 @@ $(document).ready(function(){
 
     // Creción del Slug
     $('#title').focusout(function(){
-        generateSlug($(this).val());
+        if( '' == $('#slug').val() ){
+            generateSlug($(this).val());
+        }
     })
 
     // activar Cambio de Slug
@@ -94,32 +103,34 @@ function clearFeaturedImageField(){
 }
 
 function generateSlug (str) {
-    var slug;
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
-  
-    // remove accents, swap ñ for n, etc
-    var from = "ÁàáãäâÉèéëêÍìíïîÓòóöôÚùúüûñç·/_,:;";
-    var to   = "aaaaaaeeeeeiiiiiooooouuuuunc------";
+    if (str.length > 0){
+        var slug;
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+    
+        // remove accents, swap ñ for n, etc
+        var from = "ÁàáãäâÉèéëêÍìíïîÓòóöôÚùúüûÑñç·/_,:;";
+        var to   = "aaaaaaeeeeeiiiiiooooouuuuunnc------";
 
-    for (var i=0, l=from.length ; i<l ; i++) {
-        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-        .replace(/\s+/g, '-') // collapse whitespace and replace by -
-        .replace(/-+/g, '-'); // collapse dashes
-
-    // Consultar en la base de datos si existe via AJAX
-    $.ajax({
-        url: sigzul_vars.ajax_url,
-        data: {
-            action: 'validar_slug',
-            data: str
-        },
-        success: function(response){ 
-            slug = response;
-            $('#slug').val(slug);
+        for (var i=0, l=from.length ; i<l ; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
         }
-    });
+
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+        // Consultar en la base de datos si existe via AJAX
+        $.ajax({
+            url: sigzul_vars.ajax_url,
+            data: {
+                action: 'validar_slug',
+                data: str
+            },
+            success: function(response){ 
+                slug = response;
+                $('#slug').val(slug);
+            }
+        });
+    }
 };

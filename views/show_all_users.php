@@ -1,21 +1,20 @@
-<?php    
-    //ecopre($results);
-    $results = get_categories();
-
+<?php
+    $results = get_users();
+    $message .= $_SESSION['message'];
+    $_SESSION['message'] = '';
     if ( !$results->num_rows > 0 ) {
-        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_category">aqui</a> para <strong>Añadir una categoría nueva</strong>.';
+        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_post">aqui</a> para <strong>Añadir una entrada nueva</strong>.';
     }
 ?>
 <div class="row">
     <div class="col-12">
         <h1><?php echo $view['title'] ?></h1>
-        <a class="btn btn-sm btn-primary" href="?action=add_new_category">Añadir nueva</a>
+        <a class="btn btn-sm btn-primary" href="?action=add_new_user">Añadir nuevo</a>
     </div>
     <div class="col-12">
         <p><?php echo $message; ?>
     </div>
 </div>
-
 <?php if ( $results->num_rows > 0 ) { ?>
 <div class="row">
     <div class="col-12">    
@@ -27,8 +26,9 @@
         <table class="table table-responsive-sm table-striped">
             <thead>
                 <tr>
-                    <th>Nombre</th>
-                    <th>Slug</th>
+                    <th>Usuario</th>
+                    <th>Email</th>
+                    <th>Nivel</th>                    
                     <th width="18"></th>
                 </tr>
             </thead>
@@ -37,11 +37,14 @@
                 <?php //ecopre($row); ?>
                 <tr>
                     <td>
-                        <a href="?action=edit_category&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['term_title']; ?></strong></a>
+                        <a href="?action=edit_user&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['user']; ?></strong></a>
                     </td>
-                    <td><?php echo $row['term_name']; ?></td>
+                    <td><?php echo $row['email']; ?></td>                    
                     <td>
-                        <a class="text-danger" title="Eliminar" href="?action=categories&trash=true&id=<?php echo $row['ID']; ?>">
+                        <?php echo ucfirst($row['capabilities']); ?>
+                    </td>
+                    <td>
+                        <a class="text-danger" title="Eliminar" href="?action=trash_user&id=<?php echo $row['ID']; ?>">
                             <svg width="18" height="18" alt="CoreUI Logo">
                                 <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-trash"></use>
                             </svg>
@@ -53,7 +56,7 @@
         </table>
     </div>
 </div>
-<?php if ( !$results->num_rows > 10 ) { ?>
+<?php if ( !$results->num_rows / 1 >= 1 ) { ?>
 <div class="row">
     <div class="col-12">
         <ul class="pagination">

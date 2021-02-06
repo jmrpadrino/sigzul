@@ -1,0 +1,1 @@
+No existe este tipo de contenido.

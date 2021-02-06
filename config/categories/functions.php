@@ -8,6 +8,17 @@ function get_categories(){
 
 }
 // funcion Obtener todos los posts
+function get_the_category_list(){
+    global $database;
+    global $category_list;
+    $category_list = array();
+    $query = "SELECT * FROM ".TABLE_PREFIX."terms ORDER BY term_title ASC";
+    $results = $database->query( $query );
+    while($row = $results->fetch_assoc()){
+        $category_list[] = $row;
+    }
+}
+// funcion Obtener todos los posts
 function get_categories_array(){
     global $database;
     $categories = array();
@@ -39,7 +50,7 @@ function save_form_categories($data = ''){
                     if ( isset($_POST['post_category']) && $key == 'post_category'){
                         $field = serialize($field);
                     }
-                    $fields[] = $key . "='" . $field . "'";
+                    $fields[] = $key . "='" . $database->real_escape_string($field) . "'";
                 }
             }
             $query .= implode(',', $fields);
@@ -59,7 +70,7 @@ function save_form_categories($data = ''){
             // Value for post author
             foreach ( $data as $key => $field ) {
                 if ( 'save_category_form' != $key ){
-                    $values[] = "'" . $field . "'";
+                    $values[] = "'" . $database->real_escape_string($field) . "'";
                 }
             }
             $query .= implode(',', $values);

@@ -12,9 +12,9 @@ function get_posts(){
     }
 
     if(!isset($_GET['filterby'])){
-        $query = "SELECT * FROM ".TABLE_PREFIX."posts ORDER BY ID DESC";
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts WHERE post_type='post' ORDER BY ID DESC";
     }else{
-        $query = "SELECT * FROM ".TABLE_PREFIX."posts ORDER BY ID DESC LIMIT " . $posts_per_page;
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts WHERE post_type='post' ORDER BY ID DESC LIMIT " . $posts_per_page;
     }
     return $database->query( $query );
 
@@ -48,10 +48,12 @@ function save_form($data){
 
             foreach ( $data as $key => $field ) {
                 if ( 'save_form' != $key ){
+                    /*
                     if ( isset($_POST['post_category']) && $key == 'post_category'){
                         $field = serialize($field);
                     }
-                    $fields[] = $key . "='" . $field . "'";
+                    */
+                    $fields[] = $key . "='" . $database->real_escape_string($field) . "'";
                 }
             }
             $query .= implode(',', $fields);
@@ -74,11 +76,13 @@ function save_form($data){
             foreach ( $data as $key => $field ) {
                 if ( 'save_form' != $key ){
                     // If is adding caregories
+                    /*
                     if ( isset($_POST['post_category']) && $key == 'post_category'){
                         $field = serialize($field);
                     }
+                    */
                     if ( isset($_POST['post_content']) && $key == 'post_content'){
-                        $field = addslashes($field);
+                        $field = $database->real_escape_string($field);
                     }
                     $values[] = "'" . $field . "'";
                 }
@@ -96,4 +100,25 @@ function save_form($data){
         return $database->error;
         
     }
+}
+
+// funcion Obtener todos los posts
+function get_pages(){
+    global $database;
+    $posts_per_page = 10;
+    if(isset($_GET['posts_per_page'])){
+        $posts_per_page = $_GET['posts_per_page'];
+    }
+    $page = 1;
+    if(isset($_GET['page'])){
+        $page = $_GET['page'];
+    }
+
+    if(!isset($_GET['filterby'])){
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts WHERE post_type='page' ORDER BY ID DESC";
+    }else{
+        $query = "SELECT * FROM ".TABLE_PREFIX."posts WHERE post_type='page' ORDER BY ID DESC LIMIT " . $posts_per_page;
+    }
+    return $database->query( $query );
+
 }

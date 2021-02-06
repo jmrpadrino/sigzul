@@ -27,6 +27,8 @@ $message = '';
 $database = '';
 $results = '';
 $media = '';
+$users_list = '';
+$category_list = '';
 
 // Conectar con base de datos
 include 'config/conn.php';
@@ -36,12 +38,14 @@ include 'config/database/functions.php';
 include 'config/media/functions.php';
 include 'config/access/functions.php';
 include 'config/categories/functions.php';
+include 'config/users/functions.php';
 
 // Acciones
 include 'config/database/actions.php';
 include 'config/media/actions.php';
 include 'config/access/actions.php';
 include 'config/categories/actions.php';
+include 'config/users/actions.php';
 
 // AJAX
 include 'config/ajax/functions.php';

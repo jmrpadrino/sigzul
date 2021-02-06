@@ -1,36 +1,24 @@
 <?php 
     $show_edit_btn = false;
     $form_action = 'show_all_posts';
+    $post_type = 'post';
     if ( 'edit_post' == $_GET['action'] ){
         $form_action = 'edit_post&id=' . $_GET['id'];
         $show_edit_btn = true;
     }
-    $cats = array(
-        array(
-            'id' => 1,
-            'name' => 'Escozul',
-        ),
-        array(
-            'id' => 2,
-            'name' => 'Historia',
-        ),
-        array(
-            'id' => 3,
-            'name' => 'Tratamientos',
-        ),
-        array(
-            'id' => 4,
-            'name' => 'Resultados',
-        ),
-        array(
-            'id' => 5,
-            'name' => 'Vidatox',
-        ),
-    )
+    if ( 'add_new_page' == $_GET['action'] ){
+        $form_action = 'show_all_pages';
+        $post_type = 'page';
+    }
+    if ( 'edit_page' == $_GET['action'] ){
+        $show_edit_btn = true;
+        $post_type = 'page';
+        $form_action = 'edit_page&id=' . $_GET['id'];
+    }
 
 ?>
 <form class="form-horizontal" action="?action=<?php echo $form_action; ?>" method="post" enctype="multipart/form-data">
-
+    <input type="hidden" name="post_type" value="<?php echo $post_type; ?>">
     <div class="row">
         <div class="col">
             <h1><?php echo $view['title'] ?></h1>
@@ -78,6 +66,7 @@
                         placeholder="Escriba aqui el resúmen"><?php echo (isset( $row['post_excerpt'] ) ) ? $row['post_excerpt'] : '' ; ?></textarea>
                 </div>
             </div>
+            <?php if ('administrador' == $_SESSION['user_cap']){ ?>
             <div class="card">
                 <div class="card-header"><strong>SEO</strong></div>
                 <div class="card-body">
@@ -130,8 +119,10 @@
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
         <div class="col-12 col-md-3">
+            <?php if ('post' === $post_type){ ?>
             <div class="card">
                 <div class="card-header"><strong>Categorías</strong></div>
                 <div class="card-body">
@@ -141,20 +132,19 @@
                         
                         while ($cat = $cats->fetch_assoc()){
                             $cat_checked = '';
-                            if(isset($row['post_category'])){
-                                if(in_array($cat['ID'], unserialize($row['post_category']))){
-                                    $cat_checked = 'checked';
-                                }
+                            if( isset($row['post_category']) && $row['post_category'] == $cat['ID'] ){    
+                                $cat_checked = 'checked';
                             }
                     ?>
                     <div class="form-check checkbox">
-                        <input id="cat_<?php echo $cat['ID']; ?>" class="form-check-input" name="post_category[]" type="checkbox"
+                        <input id="cat_<?php echo $cat['ID']; ?>" class="form-check-input" name="post_category" type="radio"
                             value="<?php echo $cat['ID']; ?>" <?php echo $cat_checked;?>>
                         <label class="form-check-label" for="cat_<?php echo $cat['ID']; ?>"><?php echo $cat['term_title']; ?></label>
                     </div>
                     <?php } ?>
                 </div>
             </div>
+            <?php } ?>
             <div class="card">
                 <div class="card-header"><strong>Imagen destacada</strong></div>
                 <div class="card-body">

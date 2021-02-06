@@ -7,10 +7,20 @@ $view = get_view_data();
 function get_view_data(){
     // información general de la vista.
     $views = array(
+        'no_content' => array(
+            'title' => 'No Existe',
+            'slug' => '',
+            'short_title' => 'Sin contenido'
+        ),
         'desktop' => array(
             'title' => 'Escritorio',
             'slug' => '',
             'short_title' => ''
+        ),
+        'execute_queries' => array(
+            'title' => 'Manejo de los datos',
+            'slug' => 'execute_queries',
+            'short_title' => 'Base de datos'
         ),
         'show_all_posts' => array(
             'title' => 'Todas las entradas',
@@ -26,6 +36,21 @@ function get_view_data(){
             'title' => 'Editar una entrada',
             'slug' => 'edit_post',
             'short_title' => 'Editar Entrada'
+        ),
+        'show_all_pages' => array(
+            'title' => 'Todas las páginas',
+            'slug' => 'show_all_pages',
+            'short_title' => 'Páginas'
+        ),
+        'add_new_page' => array(
+            'title' => 'Añadir una nueva página',
+            'slug' => 'add_new_page',
+            'short_title' => 'Añadir Página'
+        ),
+        'edit_page' => array(
+            'title' => 'Editar una página',
+            'slug' => 'edit_page',
+            'short_title' => 'Editar Página'
         ),
         'show_all_terms' => array(
             'title' => 'Términos para la Wiki',
@@ -92,10 +117,29 @@ function get_view_data(){
             'slug' => 'media',
             'short_title' => 'Medios'
         ),
+        'show_all_users' => array(
+            'title' => 'Usuarios',
+            'slug' => 'show_all_users',
+            'short_title' => 'Usuarios'
+        ),
+        'add_new_user' => array(
+            'title' => 'Añadir Usuario',
+            'slug' => 'add_new_user',
+            'short_title' => 'Añadir Usuario'
+        ),
+        'edit_user' => array(
+            'title' => 'Editar Usuario',
+            'slug' => 'edit_user',
+            'short_title' => 'Editar Usuario'
+        ),
     );
     
     if( isset($_GET['action']) ) {
-        return $views[$_GET['action']];
+        if (array_key_exists($_GET['action'], $views)){
+            return $views[$_GET['action']];
+        }else{
+            return $views['no_content'];
+        }
     }
     return $views['desktop'];
 
@@ -122,7 +166,9 @@ function enqueue_header_scripts(){
 
     if ( 
         'add_new_post' == $action ||
-        'edit_post' == $action
+        'edit_post' == $action ||
+        'add_new_page' == $action ||
+        'edit_page' == $action
     ){ 
 ?>
     <link href="vendors/codemirror/codemirror.css" rel="stylesheet">
@@ -239,7 +285,9 @@ function enqueue_footer_scripts(){
 
     if ( 
         'add_new_post' == $action ||
-        'edit_post' == $action
+        'edit_post' == $action ||
+        'add_new_page' == $action ||
+        'edit_page' == $action
     ){ 
 ?>
 <script>

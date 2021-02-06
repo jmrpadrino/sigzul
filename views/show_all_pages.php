@@ -1,13 +1,13 @@
 <?php
-    $results = get_posts();
+    $results = get_pages();
     if ( !$results->num_rows > 0 ) {
-        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_post">aqui</a> para <strong>Añadir una entrada nueva</strong>.';
+        $message .= 'No hay existen registros. Haga clic <a href="?action=add_new_page">aqui</a> para <strong>Añadir una entrada nueva</strong>.';
     }
 ?>
 <div class="row">
     <div class="col-12">
         <h1><?php echo $view['title'] ?></h1>
-        <a class="btn btn-sm btn-primary" href="?action=add_new_post">Añadir nueva</a>
+        <a class="btn btn-sm btn-primary" href="?action=add_new_page">Añadir nueva</a>
     </div>
     <div class="col-12">
         <p><?php echo $message; ?>
@@ -25,7 +25,7 @@
         <table class="table table-responsive-sm table-striped">
             <thead>
                 <tr>
-                    <th width="50">
+                <th width="50">
                         <svg width="18" height="18" alt="CoreUI Logo">
                             <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image"></use>
                         </svg>
@@ -33,7 +33,6 @@
                     <th>Título</th>
                     <th width="100">Fecha</th>
                     <th width="100">Autor</th>
-                    <th width="150">Categorías</th>
                     <th width="50">SEO</th>
                     <th width="18"></th>
                 </tr>
@@ -44,31 +43,23 @@
                 <tr>
                     <td><?php 
                         if($row['post_featuredimage']){
-                            ?>
+                    ?>
                         <svg width="18" height="18" alt="CoreUI Logo">
                             <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image"></use>
                         </svg>
                     <?php }else{ ?>
-                        <svg width="18" height="18" alt="CoreUI Logo" style="color: red;">
+                        <svg width="18" height="18" alt="CoreUI Logo">
                             <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-image-broken"></use>
                         </svg>
                     <?php } ?></td>
                     <td>
-                        <a href="?action=edit_post&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['post_title']; ?></strong></a> <?php if ('draft' == $row['post_status']){ ?>- <span class="text-muted">Borrador</span><?php } ?> 
+                        <a href="?action=edit_page&id=<?php echo $row['ID']; ?>" title="Editar"><strong><?php echo $row['post_title']; ?></strong></a> <?php if ('draft' == $row['post_status']){ ?>- <span class="text-muted">Borrador</span><?php } ?> 
                     </td>
                     <td><?php echo date('d/m/Y', strtotime($row['post_date'])); ?></td>
                     <td><?php 
                         foreach($users_list as $user){
                             if($row['post_author'] == $user['ID']){
                                 echo $user['user'];
-                                break;
-                            }
-                        }
-                    ?></td>
-                    <td><?php 
-                        foreach($category_list as $category){
-                            if($row['post_category'] == $category['ID']){
-                                echo $category['term_title'];
                                 break;
                             }
                         }
